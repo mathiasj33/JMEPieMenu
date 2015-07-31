@@ -44,7 +44,7 @@ public class PieMenuState extends AbstractAppState implements AnalogListener, Sc
     private Node guiNode;
     private Camera camera;
     private Node innerWheelPivot;
-    private Picture outerWheel; //TODO cleanup code
+    private Picture outerWheel;
     private Picture wheel;
     private boolean rotatingWheel;
     private float nodeAngle;
@@ -87,7 +87,7 @@ public class PieMenuState extends AbstractAppState implements AnalogListener, Sc
         }
 
         nodeAngle = FastMath.PI * 2 / numNodes;
-        center = new Vector3f(camera.getWidth() / 2, camera.getHeight() / 2, 0);  //TODO selection wheel publishen
+        center = new Vector3f(camera.getWidth() / 2, camera.getHeight() / 2, 0);
 
         attachGeometries();
         initLights();
@@ -107,7 +107,7 @@ public class PieMenuState extends AbstractAppState implements AnalogListener, Sc
         }
     }
 
-    private void playHideAnim() {  //TODO wenn man kurz tab drückt fixen;
+    private void playHideAnim() {
         ScaleControl sc = new ScaleControl(false, animSpeed);
         sc.setScaleFinishedListener(this);
         for (Node n : nodes) {
