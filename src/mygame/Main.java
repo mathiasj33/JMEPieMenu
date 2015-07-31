@@ -10,11 +10,6 @@ import com.jme3.renderer.RenderManager;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * test
- *
- * @author normenhansen
- */
 public class Main extends SimpleApplication implements ActionListener {
 
     private PieMenuState pms;
