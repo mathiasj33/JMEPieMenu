@@ -37,18 +37,18 @@ public class PieMenuState extends AbstractAppState implements AnalogListener, Sc
     private float animSpeed = 2;
     private Vector3f mousePosition = new Vector3f(0, 0, 0);
     private Vector3f center;
-    private AssetManager assetManager;
-    private InputManager inputManager;
+    private final AssetManager assetManager;
+    private final InputManager inputManager;
     private Light ambientLight;
     private Light selectionLight;
-    private Node guiNode;
-    private Camera camera;
+    private final Node guiNode;
+    private final Camera camera;
     private Node innerWheelPivot;
     private Picture outerWheel;
     private Picture wheel;
     private boolean rotatingWheel;
     private float nodeAngle;
-    private List<Node> nodes = new ArrayList<>();
+    private final List<Node> nodes;
     private String[] names;
     private List<String> texturePaths = new ArrayList<>();
     private int numNodes = 4;
@@ -58,6 +58,7 @@ public class PieMenuState extends AbstractAppState implements AnalogListener, Sc
     private boolean scaled;
 
     public PieMenuState(AssetManager assetManager, InputManager inputManager, Camera camera, Node guiNode) {
+        this.nodes = new ArrayList<>();
         this.assetManager = assetManager;
         this.inputManager = inputManager;
         this.camera = camera;
@@ -237,7 +238,7 @@ public class PieMenuState extends AbstractAppState implements AnalogListener, Sc
             Vector3f dir = mousePosition.subtract(center);
             float length = dir.length();
             float proportion = MOUSE_RADIUS / length;
-            mousePosition = center.clone().interpolate(mousePosition, proportion);
+            mousePosition = center.clone().interpolateLocal(mousePosition, proportion);
         }
     }
 

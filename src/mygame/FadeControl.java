@@ -21,8 +21,8 @@ import com.jme3.scene.control.Control;
 public class FadeControl extends AbstractControl {
 
     private FadeFinishedListener listener;
-    private float speed;
-    private boolean up;
+    private final float speed;
+    private final boolean up;
     private Material material;
     private float time;
     
@@ -56,6 +56,9 @@ public class FadeControl extends AbstractControl {
             alpha = 1 - time;
         }
         if(alpha > 1 || alpha < 0) {
+            if(alpha > 1) alpha = 1;
+            else alpha = 0;
+            material.setColor("Color", new ColorRGBA(1,1,1,alpha));
             if(listener != null) {
                 listener.fadeFinished(spatial);
             }
